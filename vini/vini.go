@@ -195,7 +195,7 @@ func main(){
 
   f,err:=os.Open(os.Args[1])
   if err!=nil{
-    fmt.Println("ERRORE IN APERURA DI ",os.Args[1])
+    fmt.Println("ERRORE IN APERTURA DI ",os.Args[1])
     os.Exit(2)
   }
 
@@ -204,6 +204,7 @@ func main(){
   for scanner.Scan(){
     AggiungiBottigliaDaRiga(scanner.Text(),&sliceBottiglie)
   }
+  f.Close()
 
   for _,b:=range sliceBottiglie{
     fmt.Println(b.String())
