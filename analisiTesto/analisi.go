@@ -79,7 +79,6 @@ tempo : 1
 1 3 1.1388888888888888
 [scorge si sol sporge. subitamente suo sé sì]
 */
-
 package main
 
 import(
@@ -90,9 +89,9 @@ import(
   "sort"
 )
 
+var accorcia=false
+
 type Vocabolario struct{
-  /*parole []string
-  frequenza []int*/
   mappa map[string]int
 }
 
@@ -159,7 +158,12 @@ func statistiche(voc Vocabolario) (int, int, float64){
       continue
     }
   }
-  media/=float64(len(voc.mappa)-1)
+  divisore:=float64(len(voc.mappa))
+  if accorcia{
+    divisore--
+  }
+
+  media/=divisore
 
   return min,max,media
 }
@@ -207,8 +211,16 @@ func main(){
 
   scanner:=bufio.NewScanner(f)
   for scanner.Scan(){
+    if scanner.Text()==""{
+      continue
+    }
     linea:=scanner.Text()
+    if linea[1]==9{
+      accorcia=true
+      //fmt.Print("accorcia\t|")
+    }
     linea=strings.TrimSpace(linea)
+    //fmt.Println(linea)
 
     sliceParole:=strings.Split(linea," ")
 
