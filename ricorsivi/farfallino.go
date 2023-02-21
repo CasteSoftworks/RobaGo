@@ -12,21 +12,6 @@ func vocale(r rune) bool{
   return false
 }
 
-/*func f(s string) string{
-  var t string
-
-  for _,l:=range s{
-    if vocale(l){
-      t+=string(l)
-      t+="f"
-      t+=string(l)
-    }else{
-      t+=string(l)
-    }
-  }
-
-  return t
-}*/
 func f(s string, j int){
   var t string
 
